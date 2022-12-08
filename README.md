@@ -1,12 +1,13 @@
 # aoc
 Advent Of Code
 
-## Running
-```bash
-$ make ruby
-```
+## Requirements
 
-Then:
+* Make
+* Docker
+* Ruby
+
+## Running tests suite
 ```bash
-ruby 2022/1/run.rb
+make run.tests
 ```

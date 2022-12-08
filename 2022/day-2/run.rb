@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class LessonTest < Test::Unit::TestCase
+class Day2Test < Test::Unit::TestCase
   def scores = { 'A' => 1, 'B' => 2, 'C' => 3, lose: 0, draw: 3, win: 6 }
 
   def combinations

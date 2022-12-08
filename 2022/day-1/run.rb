@@ -1,6 +1,6 @@
 require 'test/unit'
 
-class LessonTest < Test::Unit::TestCase
+class DayOneTest < Test::Unit::TestCase
   def calories_ranking(lines)
     acc = 0
     calories = []
