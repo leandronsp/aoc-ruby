@@ -1,31 +1,34 @@
 require 'test/unit'
 
 class LessonTest < Test::Unit::TestCase
-  def most_calories(lines)
+  def calories_ranking(lines)
     acc = 0
-    most_calories = 0
+    calories = []
+    size = lines.size
 
-    lines.each do |line|
-      next acc = 0 if line.empty?
+    lines.each_with_index do |line, idx|
+      next (calories << acc && acc = 0) if line.empty?
 
       acc += line.to_i
-      most_calories = [most_calories, acc].max
+      calories << acc if idx == (size - 1)
     end
 
-    most_calories
+    sorted = calories.sort.reverse
+    first, second, third = sorted.values_at(0, 1, 2)
+
+    [first, (first + second + third)]
   end
 
   def test_simple
-    lines = ["1", "2", "3", "", "3", "", "9", "10"]
+    lines = ["1", "2", "3", "", "3", "", "9", "10", "", "1", "6"]
 
-    assert_equal 19, most_calories(lines)
+    assert_equal [19, 32], calories_ranking(lines)
   end
 
   def test_complex
     raw   = File.read('2022/1/input')
     lines = raw.split("\n")
 
-    assert_equal 68292, most_calories(lines)
+    assert_equal [68292, 203203], calories_ranking(lines)
   end
 end
-
