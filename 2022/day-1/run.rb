@@ -26,7 +26,7 @@ class LessonTest < Test::Unit::TestCase
   end
 
   def test_complex
-    raw   = File.read('2022/1/input')
+    raw   = File.read('2022/day-1/input')
     lines = raw.split("\n")
 
     assert_equal [68292, 203203], calories_ranking(lines)
