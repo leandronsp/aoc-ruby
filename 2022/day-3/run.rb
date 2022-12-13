@@ -12,29 +12,53 @@ class Day3Test < Test::Unit::TestCase
       end
   end
 
-  def priorities_sum(input)
-    rucksacks = input.split("\n")
+  def code(letter) = alphabet_idx[letter]
+  def half(str) = str.chars.each_slice(str.size / 2).to_a
 
-    rucksacks.sum(0) do |rucksack|
-      compartments_size = rucksack.size / 2
+  def repeated(parts, acc = parts[0])
+    return acc if parts.size < 2
 
-      first_half = rucksack[0...compartments_size]
-      second_half = rucksack[compartments_size..-1]
+    repeated(parts[1..-1], acc & parts[1])
+  end
 
-      repeated = first_half.chars & second_half.chars
-      alphabet_idx[repeated.first]
-    end
+  def sum_each_half_of(input)
+    input
+      .split("\n")
+      .map(&method(:half))
+      .flat_map(&method(:repeated))
+      .sum(&method(:code))
+  end
+
+  def sum_each_three_of(input)
+    input
+      .split("\n")
+      .map(&:chars)
+      .each_slice(3)
+      .flat_map(&method(:repeated))
+      .sum(&method(:code))
   end
 
   def test_simple
     input = "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\nwMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw"
 
-    assert_equal 157, priorities_sum(input)
+    assert_equal 157, sum_each_half_of(input)
+  end
+
+  def test_simple_group_of_three
+    input = "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\nwMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw"
+
+    assert_equal 70, sum_each_three_of(input)
   end
 
   def test_complex
     input = File.read('2022/day-3/input')
 
-    assert_equal 8153, priorities_sum(input)
+    assert_equal 8153, sum_each_half_of(input)
+  end
+
+  def test_complex_group_of_three
+    input = File.read('2022/day-3/input')
+
+    assert_equal 2342, sum_each_three_of(input)
   end
 end
