@@ -1,3 +1,6 @@
+setup:
+	@docker-compose run ruby bundle
+
 ruby:
 	@docker-compose run ruby bash
 

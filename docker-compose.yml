@@ -4,4 +4,9 @@ services:
     image: ruby
     volumes:
       - .:/app
+      - rubygems:/usr/local/bundle
+      - gemconfig:/root/.local/share/gem
     working_dir: /app
+volumes:
+  rubygems:
+  gemconfig:

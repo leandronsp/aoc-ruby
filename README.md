@@ -9,5 +9,6 @@ Advent Of Code
 
 ## Running tests suite
 ```bash
+make setup
 make run.tests
 ```
