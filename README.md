@@ -1,5 +1,5 @@
-# aoc
-Advent Of Code
+# aoc-ruby
+Advent Of Code in Ruby.
 
 ## Requirements
 
