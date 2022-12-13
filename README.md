@@ -7,8 +7,12 @@ Advent Of Code
 * Docker
 * Ruby
 
-## Running tests suite
+## Setup
 ```bash
 make setup
+```
+
+## Running tests suite
+```bash
 make run.tests
 ```
