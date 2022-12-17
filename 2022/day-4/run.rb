@@ -14,6 +14,8 @@ class Day4Test < Test::Unit::TestCase
     intersection == left || intersection == right
   end
 
+  def overlapping?(left, right) = (left & right).size > 0
+
   def test_build_range
     assert_equal [2, 3, 4], build_range('2-4')
   end
@@ -26,12 +28,22 @@ class Day4Test < Test::Unit::TestCase
     refute fully_contains?([4, 5, 6], [3, 4])
   end
 
-  def pairs_containing_each_other(input)
+  def all_ranges(input)
     input
       .split("\n")
       .map { |row| row.split(",") }
       .map { |(left, right)| [build_range(left), build_range(right)] }
+  end
+
+  def pairs_containing_each_other(input)
+    all_ranges(input)
       .select { |(left, right)| fully_contains?(left, right) }
+      .size
+  end
+
+  def pairs_overlapping(input)
+    all_ranges(input)
+      .select { |(left, right)| overlapping?(left, right) }
       .size
   end
 
@@ -39,11 +51,13 @@ class Day4Test < Test::Unit::TestCase
     input = File.read('2022/day-4/input-test')
 
     assert_equal 2, pairs_containing_each_other(input)
+    assert_equal 4, pairs_overlapping(input)
   end
 
   def test_complex
     input = File.read('2022/day-4/input')
 
     assert_equal 569, pairs_containing_each_other(input)
+    assert_equal 936, pairs_overlapping(input)
   end
 end
