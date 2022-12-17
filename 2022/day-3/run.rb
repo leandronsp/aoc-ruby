@@ -38,27 +38,10 @@ class Day3Test < Test::Unit::TestCase
       .sum(&method(:code))
   end
 
-  def test_simple
+  def test_day_3
     input = "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\nwMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw"
 
     assert_equal 157, sum_each_half_of(input)
-  end
-
-  def test_simple_group_of_three
-    input = "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\nwMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw"
-
     assert_equal 70, sum_each_three_of(input)
-  end
-
-  def test_complex
-    input = File.read('2022/day-3/input')
-
-    assert_equal 8153, sum_each_half_of(input)
-  end
-
-  def test_complex_group_of_three
-    input = File.read('2022/day-3/input')
-
-    assert_equal 2342, sum_each_three_of(input)
   end
 end

@@ -47,17 +47,10 @@ class Day4Test < Test::Unit::TestCase
       .size
   end
 
-  def test_simple
+  def test_day_4
     input = File.read('2022/day-4/input-test')
 
     assert_equal 2, pairs_containing_each_other(input)
     assert_equal 4, pairs_overlapping(input)
-  end
-
-  def test_complex
-    input = File.read('2022/day-4/input')
-
-    assert_equal 569, pairs_containing_each_other(input)
-    assert_equal 936, pairs_overlapping(input)
   end
 end

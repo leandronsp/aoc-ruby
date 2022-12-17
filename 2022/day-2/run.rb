@@ -46,27 +46,10 @@ class Day2Test < Test::Unit::TestCase
     end
   end
 
-  def test_simple
+  def test_day_2
     input = "A Y\nB X\nC Z"
 
     assert_equal 15, total_score(input)
-  end
-
-  def test_simple_swap_defense
-    input = "A Y\nB X\nC Z"
-
     assert_equal 12, total_score(input, swap_defense: true)
-  end
-
-  def test_complex
-    input = File.read('2022/day-2/input')
-
-    assert_equal 14069, total_score(input)
-  end
-
-  def test_complex_swap_defense
-    input = File.read('2022/day-2/input')
-
-    assert_equal 12411, total_score(input, swap_defense: true)
   end
 end
