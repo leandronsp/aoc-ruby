@@ -83,14 +83,8 @@ class Day5Test < Test::Unit::TestCase
     input = File.read('2022/day-5/input-test')
     assert_equal 'CMZ', cratemover_9000(input)
 
-    input = File.read('2022/day-5/input')
-    assert_equal 'DHBJQJCCW', cratemover_9000(input)
-
     input = File.read('2022/day-5/input-test')
     assert_equal 'MCD', cratemover_9001(input)
-
-    input = File.read('2022/day-5/input')
-    assert_equal 'WJVRLSJJT', cratemover_9001(input)
   end
 
   def test_parse_crates
